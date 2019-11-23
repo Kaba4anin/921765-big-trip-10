@@ -134,7 +134,7 @@ const createFormTemplate = () => {
           <label class="event__label  event__type-output" for="event-destination-1">
             Sightseeing at
           </label>
-          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="Geneva" list="destination-list-1">
+          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="" list="destination-list-1">
           <datalist id="destination-list-1">
             <option value="Amsterdam"></option>
             <option value="Geneva"></option>
@@ -163,67 +163,25 @@ const createFormTemplate = () => {
         <button class="event__save-btn  btn  btn--blue" type="submit">Save</button>
         <button class="event__reset-btn" type="reset">Cancel</button>
       </header>
-      <section class="event__details">
-        <section class="event__section  event__section--offers">
-          <h3 class="event__section-title  event__section-title--offers">Offers</h3>
-          <div class="event__available-offers">
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
-              <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">Add luggage</span>
-                &plus;
-                &euro;&nbsp;<span class="event__offer-price">30</span>
-              </label>
-            </div>
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-comfort-1" type="checkbox" name="event-offer-comfort" checked>
-              <label class="event__offer-label" for="event-offer-comfort-1">
-                <span class="event__offer-title">Switch to comfort class</span>
-                &plus;
-                &euro;&nbsp;<span class="event__offer-price">100</span>
-              </label>
-            </div>
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-meal-1" type="checkbox" name="event-offer-meal">
-              <label class="event__offer-label" for="event-offer-meal-1">
-                <span class="event__offer-title">Add meal</span>
-                &plus;
-                &euro;&nbsp;<span class="event__offer-price">15</span>
-              </label>
-            </div>
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-seats-1" type="checkbox" name="event-offer-seats">
-              <label class="event__offer-label" for="event-offer-seats-1">
-                <span class="event__offer-title">Choose seats</span>
-                &plus;
-                &euro;&nbsp;<span class="event__offer-price">5</span>
-              </label>
-            </div>
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-train-1" type="checkbox" name="event-offer-train">
-              <label class="event__offer-label" for="event-offer-train-1">
-                <span class="event__offer-title">Travel by train</span>
-                &plus;
-                &euro;&nbsp;<span class="event__offer-price">40</span>
-              </label>
-            </div>
-          </div>
-        </section>
-        <section class="event__section  event__section--destination">
-          <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-          <p class="event__destination-description">Geneva is a city in Switzerland that lies at the southern tip of expansive Lac Léman (Lake Geneva). Surrounded by the Alps and Jura mountains, the city has views of dramatic Mont Blanc.</p>
-          <div class="event__photos-container">
-            <div class="event__photos-tape">
-              <img class="event__photo" src="img/photos/1.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/2.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/3.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/4.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/5.jpg" alt="Event photo">
-            </div>
-          </div>
-        </section>
-      </section>
     </form>`
+  );
+};
+
+const createTripDaysTemplate = () => {
+  return (
+    `<ul class="trip-days"></ul>`
+  );
+};
+
+const createTripDayTemplate = () => {
+  return (
+    `<li class="trip-days__item  day">
+      <div class="day__info">
+        <span class="day__counter">1</span>
+        <time class="day__date" datetime="2019-03-18">MAR 18</time>
+      </div>
+      <ul class="trip-events__list"></ul>
+     </li>`
   );
 };
 
@@ -239,38 +197,38 @@ const createTripInfoTemplate = () => {
 const createSortTemplate = () => {
   return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
-      <span class="trip-sort__item  trip-sort__item--day"></span>
+      <span class="trip-sort__item  trip-sort__item--day">Day</span>
+      
       <div class="trip-sort__item  trip-sort__item--event">
-        <input id="sort-event" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-event">
+        <input id="sort-event" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-event" checked>
         <label class="trip-sort__btn" for="sort-event">Event</label>
       </div>
+      
       <div class="trip-sort__item  trip-sort__item--time">
-        <input id="sort-time" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-time" checked>
-        <label class="trip-sort__btn  trip-sort__btn--active  trip-sort__btn--by-increase" for="sort-time">
+        <input id="sort-time" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-time">
+        <label class="trip-sort__btn" for="sort-time">
           Time
+          <svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
+            <path d="M2.888 4.852V9.694H5.588V4.852L7.91 5.068L4.238 0.00999987L0.548 5.068L2.888 4.852Z"/>
+          </svg>
         </label>
       </div>
+      
       <div class="trip-sort__item  trip-sort__item--price">
         <input id="sort-price" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-price">
         <label class="trip-sort__btn" for="sort-price">
           Price
+          <svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
+            <path d="M2.888 4.852V9.694H5.588V4.852L7.91 5.068L4.238 0.00999987L0.548 5.068L2.888 4.852Z"/>
+          </svg>
         </label>
       </div>
       <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
-    </form>
-    <ul class="trip-days">
-      <li class="trip-days__item  day">
-        <div class="day__info">
-          <span class="day__counter">1</span>
-          <time class="day__date" datetime="2019-03-18">MAR 18</time>
-        </div>
-        <ul class="trip-events__list"></ul>
-          </li>
-        </ul>`
+    </form>`
   );
 };
 
-const render = (container, template, place) => {
+const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
@@ -278,17 +236,20 @@ const tripInfoElem = document.querySelector(`.trip-info`);
 render(tripInfoElem, createTripInfoTemplate(), `afterbegin`);
 
 const mainMenuElem = document.querySelector(`.trip-controls`);
-const mainMenuFirstTitleElem = mainMenuElem.querySelector(`.visually-hidden:first-child`);
-render(mainMenuFirstTitleElem, createMenuTemplate(), `afterend`);
-render(mainMenuElem, createFilterTemplate(), `beforeend`);
+render(mainMenuElem, createMenuTemplate());
+render(mainMenuElem, createFilterTemplate());
 
 const tripEventsElem = document.querySelector(`.trip-events`);
-render(tripEventsElem, createSortTemplate(), `beforeend`);
-render(tripEventsElem, createFormTemplate(), `afterbegin`);
+render(tripEventsElem, createSortTemplate());
+render(tripEventsElem, createFormTemplate());
+render(tripEventsElem, createTripDaysTemplate());
 
-const tripEventsListElem = tripEventsElem.querySelector(`.trip-events__list`);
+const tripDays = document.querySelector(`.trip-days`);
+render(tripDays, createTripDayTemplate());
+
+const tripEventsListElem = document.querySelector(`.trip-events__list`);
 
 const CARD_COUNT = 3;
 new Array(CARD_COUNT)
   .fill(``)
-  .forEach(()=> render(tripEventsListElem, createCardTemplate(), `beforeend`));
+  .forEach(()=> render(tripEventsListElem, createCardTemplate()));
